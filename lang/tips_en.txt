@@ -1,0 +1,17 @@
+Clicking the date gives you the tasks due today.
+--NEXT--
+All the small icons here are from <a href="http://www.famfamfam.com">famfamfam.com</a>.
+--NEXT--
+You can list all the items by context or project.
+--NEXT--
+Don't try this on a public server! It's not very secure!
+--NEXT--
+The printing is designed for 3x5 index cards, but you can print to A4 by going to File->Print in your browser.
+--NEXT--
+Problems? Try the help section.
+--NEXT--
+On the index page (this one) click an item in the immediate list to edit it.
+--NEXT--
+You can now select the date from a calendar. Just click in the date box as if you were typing.
+--NEXT--
+The calendar script is <a href="http://www.garrett.nildram.co.uk/calendar/jacs.htm">JACS</a> by Anthony Garrett.

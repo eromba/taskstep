@@ -1,0 +1,40 @@
+/* This is so advanced, we even have a stylesheet for the install! */
+
+#installcontainer{
+  width:800px;
+  margin:0 auto;
+  font-family:Helvetica;
+}
+
+#footer{
+	padding: 2em 0px;
+	font-size: .7em;
+	text-align: center;
+	color: gray;
+	clear: both;
+	font-family:Helvetica;
+}
+
+h1{
+  font-size:14pt;
+  color:#555;
+}
+
+.error{
+  background-color:#fcc;
+  border:1px solid #c00;
+  padding:5px;
+  font-size:10pt;
+}
+
+.success{
+  background-color:#cfc;
+  border:1px solid #0c0;
+  padding:5px;
+  font-size:10pt;
+}
+
+p{
+  font-size:10pt;
+  color:#555;
+}

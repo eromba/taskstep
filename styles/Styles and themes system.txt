@@ -1,0 +1,13 @@
++-------------------------------------+
+|Styles and themes system for TaskStep|
++-------------------------------------+
+
+The new styles and themes system lets you customize the look of TaskStep a little more easily.
+
+In the settings section there is now an option to change the style - just add a css file to this directory for it to appear on the list.
+To create your own, just customize the default one and put a copy in here, and then select it.
+Place images for the style in a subdirectory of the images folder here.
+Note that the subdirectory contains copies of all the default icons so that the stylesheets can access them easily.
+
+If you want to release your style, just post in the developer forums (http://cunningtitle.com/forum/)
+Please prefix any release posts with [Style]

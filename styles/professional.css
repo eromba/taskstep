@@ -1,0 +1,421 @@
+/* Professional Stylesheet for TaskStep */
+/* Created by Loco 2006 */
+
+body{
+	font-family:Helvetica;
+}
+
+#container{
+	width:800px;
+	margin:0 auto;
+}
+
+#footer{
+	padding: 2em 0px;
+	font-size: .7em;
+	text-align: center;
+	color: gray;
+	clear: both;
+}
+
+/* Header */
+
+#header{
+	background-image:url(images/pro/headerback.jpg);
+	height:62px;
+}
+
+#header h1{
+	padding:8px 0 0 10px;
+	font-family:Helvetica;
+	font-size:14pt;
+	color:#fff;
+	font-weight:normal;
+}
+
+#header h1 a{
+	color:#fff;
+	text-decoration:none;
+}
+
+#headernav{
+	height:22px;
+	background-color:#ececef;
+	margin-bottom: 14px;
+}
+
+#date-today{
+	position:relative;
+	top:-1.2em;
+	left:400px;
+	font-size:10pt;
+}
+
+#headernav ul{
+	margin:0;
+	padding:0;
+}
+
+#headernav ul li{
+	display:inline;
+	padding-left:14px;
+	list-style-type:none;
+	font-size:10pt;
+}
+
+#headernav ul li a{
+	color:#000;
+	text-decoration:none;
+}
+
+#headernav ul li a img{
+	vertical-align:-2px;
+}
+
+#headernav ul li a:hover img{
+	text-decoration:none;
+}
+
+#adminbox{
+	float:right;
+	background-color:#ddf;
+	padding:2px;
+	margin:2px;
+	color:#33d;
+	font-size:9pt;
+	text-align:right;
+	line-height:1.6em;
+}
+
+#adminbox a{
+	color:#33d;
+	text-decoration:none;
+}
+
+#adminbox img{
+	vertical-align:middle;
+}
+
+/* Sidebar */
+
+#sidebar{
+	border-right:1px dotted #ccc;
+	width:190px;
+	float: left;
+}
+
+#sidebar ul{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+
+#sidebar ul li a{
+	padding:1em 25px;
+	border-bottom:1px dotted #ccc;
+	background-image: url(images/add.png);
+	background-repeat: no-repeat;
+	background-position: 0.2em 1em;
+	display:block;
+	color:#000;
+	text-decoration:none;
+	font-size:10pt;
+}
+
+#sidebar a.ideas{
+	background-image: url(images/lightbulb.png);
+}
+
+#sidebar a.tobuy{
+	background-image: url(images/cart.png);
+}
+
+#sidebar a.immediate{
+	background-image: url(images/lightning.png);
+}
+
+#sidebar a.week{
+	background-image: url(images/newspaper.png);
+}
+
+#sidebar a.month{
+	background-image: url(images/calendar.png);
+}
+
+#sidebar a.year{
+	background-image: url(images/world.png);
+}
+
+#sidebar a.lifetime{
+	border:none;
+	background-image: url(images/pro/user_gray.png);
+}
+
+#sidebar ul li a:hover{
+	background-color:#e8eef3;
+}
+
+.noundone{
+	color:red;
+	font-size:8pt;
+}
+
+.nodone{
+	color:green;
+	font-size:8pt;
+}
+
+/* Content */
+
+#sectiontitle{
+	display:block;
+	font-size: .75em;
+}
+
+#content{
+	font-size:10pt;
+	width:550px;
+	margin-left:220px;
+}
+
+#content a{
+	color:#000;
+}
+
+.current{
+	padding:5px;
+	background-color:#ffa;
+	margin-bottom:10px;
+}
+
+.old{
+	padding:5px;
+	background-color:#fcc;
+	margin-bottom:10px;
+}
+
+.np{
+	padding:5px;
+	margin-bottom:10px;
+}
+
+a img{
+	border:0;
+}
+
+.actionicon{
+	float:right;
+	padding-left:2px;
+}
+
+#deleted{
+	background-color:#eee;
+	padding:5px;
+}
+
+#updated{
+	background-color:#cfc;
+	padding:5px;
+	margin-bottom:10px;
+}
+
+.error{
+	background-color:#fcc;
+	padding:5px;
+}
+
+.listlinkstyle a{
+	text-decoration:none;
+}
+
+.printer{
+	float:right;
+	position:relative;
+	top:3px;
+}
+
+.printer a{
+	text-decoration:none;
+}
+
+.listlinkssmart {
+	display:block;
+	padding:3px;
+	border-top:1px dotted #ccc;
+}
+
+#editlist a:hover{
+	background-color:#e8eef3;
+}
+
+.inform{
+	background-color:#ddf;
+	padding:5px;
+	margin-bottom:10px;
+}
+
+.purgebutton{
+	background-color:#f3f3f3;
+	border:1px solid #ddd;
+	padding:5px;
+	margin-top:3px;
+}
+
+.purgebutton img{
+	vertical-align:-2px;
+}
+
+.purgebutton a{
+	text-decoration:none;
+}
+
+.updatenewbutton{
+	background-color:#cfc;
+	border:1px solid #0c0;
+	padding:5px;
+	margin-top:3px;
+}
+
+.updatenewbutton img{
+	vertical-align:-2px;
+}
+
+.updatenewbutton a{
+	text-decoration:none;
+}
+
+.breaker{
+	width:550px;
+	border-top:1px solid #ccc;
+	margin-top:10px;
+}
+
+.settingssection h2{
+	padding:0;
+	margin:5px 0;
+}
+
+.necessary{
+	border:1px solid #f00;
+}
+
+.marked{
+	color:#f00;
+}
+
+#passwordsettings form input{
+	margin:5px 0;
+}
+
+.sortform{
+	padding-bottom:5px;
+	border-bottom:1px solid #ddd;
+	margin-bottom:5px;
+}
+
+/* Index page */
+
+#immediateblock{
+	width:255px;
+	background-color:#ffa;
+	padding:5px;
+}
+
+.valign{
+	vertical-align:middle;
+}
+
+h2{
+	padding:0;
+	margin:0 0 4px 0;
+	font-size:10pt;
+	font-family:Helvetica;
+	color:#000;
+}
+
+#tipsbox{
+	width:255px;
+	background-color:#ddf;
+	padding:5px;
+	margin:10px 0 0 0;
+	color:#33d;
+	font-size:9pt;
+	line-height:1.6em;
+}
+
+#tipsbox a{
+	color:#33d;
+	text-decoration:none;
+}
+
+#tipsbox img{
+	vertical-align:middle;
+}
+
+#bookmarklet{
+	float:right;
+	width:210px;
+	background-color:#f3f3f3;
+	border:1px solid #ddd;
+	padding:5px;
+	margin:10px 0 0 0;
+	color:#000;
+	font-size:9pt;
+	line-height:1.6em;
+}
+
+#bookmarklet a{
+	color:#000;
+	text-decoration:none;
+}
+
+#bookmarklet img{
+	vertical-align:middle;
+}
+
+#welcomebox{
+	background-color:#cfc;
+	float:right;
+	width:255px;
+	padding:5px;
+	text-align:justify;
+}
+
+/* Login box */
+
+#loginbox{
+	margin:100px auto 0px auto;
+	width:300px;
+	background-color:#f3f3f3;
+	border:1px solid #ddd;
+	padding:20px;
+	color:#555;
+}
+
+#loginbox h1{
+	margin:0;
+	padding:0;
+	font-family:Helvetica, sans-serif;
+	font-size:16pt;
+}
+
+#loginbox h1 img{
+	vertical-align:middle;
+}
+
+#loginbox p{
+	text-align:center;
+}
+
+#loginbox p a{
+	color:#555;
+}
+
+.securityinfo{
+	font-size:8pt;
+	padding:0;
+	margin:0;
+	color:#bbb;
+	float:right;
+	display:none;
+}

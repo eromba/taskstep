@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>TaskStep - Readme file</title>
+  <style>
+#container{
+  width:800px;
+  margin:0 auto;
+}
+
+h1{
+  font-family:Helvetica;
+  font-size:14pt;
+  color:#555;
+}
+
+h1 img{
+  vertical-align:middle;
+}
+
+h2{
+  font-size:12pt;
+  color:#555;
+}
+
+ol{
+  font-size:11pt;
+}
+
+ol li{
+  padding:5px 0px;
+}
+
+ol ul{
+  font-size:10pt;
+  color:gray;
+}
+
+ol ul li{
+  padding:0px;
+}
+
+body{
+  font-family:Helvetica;
+  font-size:10pt;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  background-position:70% 7em;
+}
+
+p a{
+  text-decoration:underline;
+}
+
+p{
+  text-align:justify;
+}
+
+.notice{
+  padding:5px;
+  background-color:#ffa;
+  border:1px solid #cc0;
+  margin-bottom:10px;
+  display:block;
+}
+
+.samplecode{
+  padding:1px;
+  margin:3px;
+  color:#777;
+}</style>
+</head>
+
+<body>
+
+<div id="container">
+<h1><img src="images/icon.png" alt="" /> TaskStep 1.0 - Readme</h1>
+
+<div class="notice">
+As of version 0.4 there is a new passwords system, so when you have updated
+or installed TaskStep you will need to enter a password! 
+
+<p>See below for details.</p>
+</div>
+
+<h2>Introduction</h2>
+
+<p>Thanks for downloading TaskStep, a PHP and MySQL-based list/task manager.
+It is ideal for running on your own computer. If you have a website, it can
+be installed there and used via an internet connection.</p>
+
+<h2>Installation</h2>
+
+<h3>To run TaskStep on your own computer</h3>
+<ol>
+  <li>Download and install an AMP
+    (<strong>A</strong>pache/<strong>M</strong>ySQL/<strong>P</strong>HP)
+    server 
+    <ul>
+      <li>XAMPP is a free, popular, and cross-platform AMP server. It can be
+        found at <a
+        href="http://www.apachefriends.org/en/xampp.html">http://www.apachefriends.org/en/xampp.html</a></li>
+    </ul>
+  </li>
+  <li>Extract the contents of this zip file to a folder in your AMP server's
+    web documents folder (usually "htdocs") 
+    <ul>
+      <li>XAMPP's web documents folder is C:\Program Files\xampp\htdocs</li>
+    </ul>
+  </li>
+  <li>Start your AMP server</li>
+  <li>Create a new MySQL database called "taskstep" (usually done through
+    phpMyAdmin) 
+    <ul>
+      <li>If you are using XAMPP, you can access your phpMyAdmin control
+        panel at <a
+        href="http://localhost/phpmyadmin/">http://localhost/phpmyadmin/</a></li>
+    </ul>
+  </li>
+  <li>Modify the TaskStep file "config.php" using a text editor (such as
+    Notepad) 
+    <ul>
+      <li>Change the MySQL information (server, username, and password)
+        appropriately</li>
+      <li>For XAMPP, the values of 'localhost', 'root', and '' (blank),
+        respectively, will work if you accepted the default settings</li>
+    </ul>
+  </li>
+  <li>Go to the TaskStep file "install/install.php" in your web browswer and
+    follow the on-screen instructions</li>
+  <li>Once the installation is complete, be sure to delete the "install"
+    folder as a security precaution</li>
+</ol>
+
+<h3>To run TaskStep on a web server</h3>
+<ol>
+  <li>Upload the contents of this zip file to a subfolder on your web
+  server</li>
+  <li>Create a new MySQL database called "taskstep"</li>
+  <li>Modify the TaskStep file "config.php" using a text editor (such as
+    Notepad) 
+    <ul>
+      <li>Change the MySQL information (server, username, and password)
+        appropriately</li>
+    </ul>
+  </li>
+  <li>Go to the TaskStep file "install/install.php" in your web browser and
+    follow the on-screen instructions</li>
+  <li>Once the installation is complete, be sure to delete the "install"
+    folder as a security precaution</li>
+</ol>
+
+<p>If the installation script shows any red boxes, then there are problems,
+in which case you can ask for assistance at <a
+href="http://cunningtitle.com/forum/">the forums</a>.</p>
+
+<h2>Updating</h2>
+<ol>
+  <li>Backup any custom styles</li>
+  <li>Delete <strong>all</strong> files and folders in your TaskStep folder
+    on your AMP server or web server 
+    <ul>
+      <li>Don't worry, your tasks, settings, and other data is kept in the
+        MySQL database and will not be erased</li>
+    </ul>
+  </li>
+  <li>Unzip the contents of this zip file to your TaskStep folder</li>
+  <li>Modify the TaskStep file "config.php" using a text editor (such as
+    Notepad) 
+    <ul>
+      <li>Change the MySQL information (server, username, and password)
+        appropriately</li>
+    </ul>
+  </li>
+  <li>Go to the file "install/update.php" in your web browser and follow the
+    on-screen instructions</li>
+  <li>Once the updating process is complete, be sure to delete the "install"
+    folder as a security precaution</li>
+</ol>
+
+<p>If the upgrade script shows any red boxes, then there are problems, in
+which case you can ask for assistance at <a
+href="http://cunningtitle.com/forum/">the forums</a>.</p>
+
+<h2>Passwords</h2>
+
+<p>Starting with v0.4, TaskStep has a passwords system, so you can now host
+TaskStep on your own site with a reasonable amount of security. <b>The first
+time you install TaskStep or upgrade to v0.4 or higher, the password is
+"taskstep" (without the quotes). You must change this as soon as
+possible.</b> If you are running TaskStep on your own computer, you can
+disable sessions to remove the requirement of a password. This is not
+recommended, and should certainly not be done if you are running it on a
+website. The system is probably not fool-proof, but it is a start.</p>
+
+<p>If you forget your password, ask around in <a
+href="http://cunningtitle.com/forum/">the forums</a> and we'll help you reset
+it.</p>
+
+<h2>License</h2>
+
+<p><!--Creative Commons License-->
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/"><img
+alt="Creative Commons License" style="border-width: 0"
+src="http://creativecommons.org/images/public/somerights20.png" /></a><br />
+This work is licensed under a <a rel="license"
+href="http://creativecommons.org/licenses/by-sa/2.5/">Creative Commons
+Attribution-ShareAlike 2.5 License</a>.<!--/Creative Commons License-->
+ <!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<Work rdf:about="">
+		<license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/" />
+	<dc:type rdf:resource="http://purl.org/dc/dcmitype/InteractiveResource" />
+	</Work>
+	<License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/"><permits rdf:resource="http://web.resource.org/cc/Reproduction"/><permits rdf:resource="http://web.resource.org/cc/Distribution"/><requires rdf:resource="http://web.resource.org/cc/Notice"/><requires rdf:resource="http://web.resource.org/cc/Attribution"/><permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/><requires rdf:resource="http://web.resource.org/cc/ShareAlike"/></License></rdf:RDF> -->
+ </p>
+</div>
+</body>
+</html>

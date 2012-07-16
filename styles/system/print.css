@@ -1,0 +1,37 @@
+/* Standard Stylesheet for TaskStep */
+/* Created by Loco 2006 */
+
+body{
+  font-family:Helvetica;
+  font-size:10pt;
+}
+
+h1{
+  font-size:14pt;
+}
+
+#header, #headernav, #sidebar, #footer{
+  display:none;
+}
+
+#content{
+  position:relative;
+  top:0;
+  left:0;
+  width:100%;
+  margin:0;
+}
+
+.actionicon, .printer, .sortform, .null{
+  display:none;
+}
+
+.np, .current, .old{
+  border-top:1px solid #888;
+  padding:6px;
+}
+
+a{
+  color:#000;
+  text-decoration:none;
+}

@@ -1,0 +1,63 @@
+<div class="breaker"></div>
+
+<div id="bookmarklet">
+	<?php echo $l_cp_bookmarklettext; ?>
+	<br />
+	<a href="javascript:document.location='<?php selfref_url(); ?>edit.php?url='+document.location.href">
+		<img src="images/bookmarklet.jpg" alt="<?php echo $l_cp_bookmarklet; ?>" />
+	</a>
+</div>
+
+<div class="settingssection">
+	<h2><b><?php echo $l_cp_display_title; ?></b></h2>
+	<?php echo $updatedblock ?>
+	<form action='settings.php' method='post'>
+		<div>
+			<?php echo $tipsfield ?><br />
+			<br />
+			<?php echo $l_cp_display_css ?><br />
+			<select name="style">
+				<?php echo $styleoptions ?>
+			</select><br />
+			<br />
+			<input name="submit" type="submit" value="<?php echo $l_cp_display_button; ?>" />
+		</div>
+	</form>
+</div>
+
+<div class="breaker"></div>
+
+<div id="passwordsettings" class="settingssection">
+	<h2><b><?php echo $l_cp_password_title; ?></b></h2>
+	<?php echo $pwmessage ?><br />
+	<form action='settings.php' method='post'>
+		<div>
+			<table>
+				<tr>
+					<td><?php echo $l_cp_password_current; ?><span class="marked">*</span>:</td>
+					<td><input type="password" name="currentpass" class="necessary" /></td>
+				</tr>
+				<tr>
+					<td><?php echo $l_cp_password_new1; ?>:</td>
+					<td><input type="password" name="newpass1" /></td>
+				</tr>
+				<tr>
+					<td><?php echo $l_cp_password_new2; ?>:</td>
+					<td><input type="password" name="newpass2" /></td>
+				</tr>
+			</table>
+			<?php echo $usepwfield ?>
+			<br /><br /><?php echo $l_cp_password_fieldss; ?> <span class="marked">*</span> <?php echo $l_cp_password_fieldse; ?>.
+			<br /><input name="passchanges" type="submit" value="<?php echo $l_cp_password_button; ?>" />
+		</div>
+	</form> 
+</div>
+
+<div class="breaker"></div>
+
+<div class="settingssection">
+<h2><b><?php echo $l_cp_tools_title; ?></b></h2>
+<span class="purgebutton"><img src="images/bomb.png" alt=""/>&nbsp;<?php echo $purgetext ?></span>
+<span class="purgebutton"><img src="images/application_get.png" alt=""/>&nbsp;<a href="install/update-latest.php"><?php echo $l_cp_tools_update; ?></a></span>
+<span class="purgebutton"><img src="images/page_white_excel.png" alt=""/>&nbsp;<?php echo $exporttext ?></span>
+</div>

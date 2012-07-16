@@ -1,0 +1,174 @@
+.jacs, .jacsStatic {padding:1px;vertical-align:middle;}
+iframe.jacs        {position:absolute;visibility:hidden; 
+	top:0px;left:0px;width:1px;height:1px;border:0px;}
+table.jacs,  
+table.jacsStatic   {padding:0px;visibility:hidden;width:200px;
+	cursor:default;text-align:center;}
+table.jacs         {top:0px;left:0px;position:absolute;}
+
+/* IMPORTANT:  The JACS calendar script requires all  the classes defined here. */
+
+table.jacs, 
+table.jacsStatic {
+	padding:       1px; 
+	vertical-align:middle; 
+	border:        ridge 2px; 
+	font-size:     10pt; 
+	font-family:   Arial,Helvetica,Sans-Serif; 
+	font-weight:   bold;}
+td.jacsDrag, 
+td.jacsHead {
+	padding:       0px 0px; 
+	text-align:    center;}
+td.jacsDrag {font-size:     8pt;}
+select.jacsHead {margin:        3px 1px;}
+input.jacsHead  {
+	height:        22px; 
+	width:         22px; 
+	vertical-align:middle; 
+	text-align:    center; 
+	margin:        2px 1px; 
+	font-weight:   bold; 
+	font-size:     10pt; 
+	font-family:   fixedSys;}
+td.jacsWeekNumberHead, 
+td.jacsWeek {padding:       0px; 
+	text-align:    center; 
+	font-weight:   bold;}
+td.jacsFoot, 
+td.jacsFootHover, 
+td.jacsFoot:hover, 
+td.jacsFootDisabled {
+	padding:       0px; 
+	text-align:    center; 
+	font-weight:   normal;}
+table.jacsCells {
+	text-align:    right; 
+	font-size:     8pt; 
+	width:         96%;}
+td.jacsCells, 
+td.jacsCellsHover, 
+td.jacsCells:hover, 
+td.jacsCellsDisabled, 
+td.jacsCellsExMonth, 
+td.jacsCellsExMonthHover, 
+td.jacsCellsExMonth:hover, 
+td.jacsCellsExMonthDisabled, 
+td.jacsCellsWeekend, 
+td.jacsCellsWeekendHover, 
+td.jacsCellsWeekend:hover, 
+td.jacsCellsWeekendDisabled, 
+td.jacsInputDate, 
+td.jacsInputDateHover, 
+td.jacsInputDate:hover, 
+td.jacsInputDateDisabled, 
+td.jacsWeekNo, 
+td.jacsWeeks {
+	padding:           3px; 
+	width:             16px; 
+	height:            16px; 
+	border-width:      1px; 
+	border-style:      solid; 
+	font-weight:       bold; 
+	vertical-align:    middle;}
+/* Blend the colours into your page here...    */ 
+/* Calendar background */ 
+table.jacs, 
+table.jacsStatic            {background-color:  #F0F0F0;}
+/* Drag Handle */ 
+td.jacsDrag {
+	background-color:  #99C; 
+	color:             #CCF;}
+/* Week number heading */ 
+td.jacsWeekNumberHead       {color:             #66C;}
+/* Week day headings */ 
+td.jacsWeek {
+	color:             #FFF; 
+	background-color:  #99B3CC;}
+/* Week numbers */ 
+td.jacsWeekNo {
+	background-color:  #767; 
+	color:             #CCC;}
+/* Enabled Days */ 
+/* Week Day */ 
+td.jacsCells {
+	background-color:  #CCC; 
+	color:             #000;}
+/* Day matching the input date */ 
+td.jacsInputDate {
+	background-color:  #C99; 
+	color:             #F00;}
+/* Weekend Day */ 
+td.jacsCellsWeekend {
+	background-color:  #CCC; 
+	color:             #C66;}
+/* Day outside the current month */ 
+td.jacsCellsExMonth {
+	background-color:  #CCC; 
+	color:             #666;}
+/* Today selector */ 
+td.jacsFoot {
+	background-color:  #99B3CC; 
+	color:             #FFF;}
+/* MouseOver/Hover formatting  
+	  If you want to "turn off" any of the formatting  
+	  then just set to the same as the standard format 
+	  above.  
+  
+	  Note: The reason that the following are 
+	  implemented using both a class and a :hover 
+	  pseudoclass is because Opera handles the rendering 
+	  involved in the class-swap very poorly and IE6  
+	  (and below) only implements pseudoclasses on the 
+	  anchor tag. 
+*/ 
+/* Active cells */ 
+td.jacsCells:hover, 
+td.jacsCellsHover {
+	background-color:  #FF0; 
+	cursor:            pointer; 
+	color:             #000;}
+/* Day matching the input date */ 
+td.jacsInputDate:hover, 
+td.jacsInputDateHover {
+	background-color:  #FF0; 
+	cursor:            pointer; 
+	color:             #000;}
+/* Weekend cells */ 
+td.jacsCellsWeekend:hover, 
+td.jacsCellsWeekendHover {
+	background-color:  #FF0; 
+	cursor:            pointer; 
+	color:             #000;}
+/* Day outside the current month */ 
+td.jacsCellsExMonth:hover, 
+td.jacsCellsExMonthHover {
+	background-color:  #FF0; 
+	cursor:            pointer; 
+	color:             #000;}
+/* Today selector */ 
+td.jacsFoot:hover, 
+td.jacsFootHover {
+	color:             #FF0; 
+	cursor:            pointer; 
+	font-weight:       bold;}
+/* Disabled cells */ 
+/* Week Day */ 
+/* Day matching the input date */ 
+td.jacsInputDateDisabled  {
+	background-color:  #999; 
+	color:             #000;}
+td.jacsCellsDisabled {
+	background-color:  #999; 
+	color:             #000;}
+/* Weekend Day */ 
+td.jacsCellsWeekendDisabled {
+	background-color:  #999; 
+	color:             #C66;}
+/* Day outside the current month */ 
+td.jacsCellsExMonthDisabled {
+	background-color:  #999; 
+	color:             #666;}
+td.jacsFootDisabled {
+	background-color:  #6666CC; 
+	color:             #FFF;}
