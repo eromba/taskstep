@@ -34,7 +34,7 @@ $sql='CREATE TABLE `items` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `context` text NOT NULL ,'
    . ' `project` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
-   . ' KEY `id_2` ( `id` ) ) TYPE = MYISAM '; 
+   . ' KEY `id_2` ( `id` ) )'; 
 if(mysql_query($sql)) echo $success.'Items table created successfully</div>' . "\n";
 else 
 {
@@ -51,7 +51,7 @@ else
 $sql='CREATE TABLE `contexts` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `title` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
-   . ' KEY `id_2` ( `id` ) ) TYPE = MYISAM '; 
+   . ' KEY `id_2` ( `id` ) )'; 
 if(mysql_query($sql)) echo $success.'Contexts table created successfully</div>' . "\n";
 else 
 {
@@ -69,7 +69,7 @@ $sql='CREATE TABLE `sections` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `title` text NOT NULL ,'
    . ' `fancytitle` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
-   . ' KEY `id_2` ( `id` ) ) TYPE = MYISAM '; 
+   . ' KEY `id_2` ( `id` ) )'; 
 if(mysql_query($sql)) echo $success.'Sections table created successfully</div>' . "\n";
 else 
 {
@@ -86,7 +86,7 @@ else
 $sql='CREATE TABLE `projects` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `title` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
-   . ' KEY `id_2` ( `id` ) ) TYPE = MYISAM '; 
+   . ' KEY `id_2` ( `id` ) )'; 
 if(mysql_query($sql)) echo $success.'Projects table created successfully</div>' . "\n";
 else 
 {
@@ -104,7 +104,7 @@ $sql='CREATE TABLE `settings` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `setting` text NOT NULL ,'
    . ' `value` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
-   . ' KEY `id_2` ( `id` ) ) TYPE = MYISAM '; 
+   . ' KEY `id_2` ( `id` ) )'; 
 if(mysql_query($sql)) echo $success.'Settings table created successfully</div>' . "\n";
 else 
 {
