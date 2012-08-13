@@ -138,16 +138,16 @@ $total = $secure_password.$salt;
 //table columns = id, title, message, who, date, time
 //post variables = $title, $message, '$who, $date, $time
 
-if(mysql_query("INSERT INTO items (id,title,date,section,notes,url,done,context,project)".
-      "VALUES ('NULL', '$title', '$date', '$section', '$notes', '$url', '$done', '$context', '$project')")
-	  AND mysql_query("INSERT INTO contexts (id,title)".
-      "VALUES ('NULL', 'SampleContext')")
-	  AND mysql_query("INSERT INTO projects (id,title)".
-      "VALUES ('NULL', 'SampleProject')")
-	  AND mysql_query("INSERT INTO sections (id,title,fancytitle)".
-      "VALUES ('NULL', 'ideas', 'Ideas'),('NULL', 'tobuy', 'Might want to buy'),('NULL', 'immediate', 'Immediate'),('NULL', 'week', 'This week'),('NULL', 'month', 'This month'),('NULL', 'year', 'This year'),('NULL', 'lifetime', 'Some day maybe')")
-      AND mysql_query("INSERT INTO settings (id,setting,value)".
-      "VALUES ('NULL', 'tips', '$tips'),('NULL', 'style', 'default.css'),('NULL', 'password', '$total'),('NULL', 'salt', '$salt'),('NULL', 'sessions', '1')")){
+if(mysql_query("INSERT INTO items (title,date,section,notes,url,done,context,project)".
+      "VALUES ('$title', '$date', '$section', '$notes', '$url', '$done', '$context', '$project')")
+	  AND mysql_query("INSERT INTO contexts (title)".
+      "VALUES ('SampleContext')")
+	  AND mysql_query("INSERT INTO projects (title)".
+      "VALUES ('SampleProject')")
+	  AND mysql_query("INSERT INTO sections (title,fancytitle)".
+      "VALUES ('ideas', 'Ideas'),('tobuy', 'Might want to buy'),('immediate', 'Immediate'),('week', 'This week'),('month', 'This month'),('year', 'This year'),('lifetime', 'Some day maybe')")
+      AND mysql_query("INSERT INTO settings (setting,value)".
+      "VALUES ('tips', '$tips'),('style', 'default.css'),('password', '$total'),('salt', '$salt'),('sessions', '1')")){
 	    echo '<div class="success"><img src="../images/table_go.png" alt="" />&nbsp;Sample data inserted successfully</div><br />';
 	    echo '<div class="success"><img src="../images/shield.png" alt="" />&nbsp;<b>Important!</b> The default password is "taskstep" (without the quotes). Change this as soon as possible.</div>';
 	}
