@@ -30,7 +30,7 @@ if($postcmd == "add" && isset($_POST["add"]))
 if($getcmd=="delete")
 {
     $delid = $_GET["id"];
-	$delquery = mysql_query("DELETE FROM {$type}s WHERE id=$delid");
+	$delquery = $mysqli->query("DELETE FROM {$type}s WHERE id=$delid");
     if($delquery) echo "<div id='deleted' class='fade'><img src='images/bin.png' alt='' /> ".$l_msg_deleted[$type]."</div>";
 }
 
