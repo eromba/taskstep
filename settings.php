@@ -67,7 +67,7 @@ if (isset($_POST["passchanges"]))
 	$salt = $r[0];
 
 	//Get the hashed password
-	$pass_result = mysql_query("SELECT value FROM settings WHERE setting='password'");
+	$pass_result = $mysqli->query("SELECT value FROM settings WHERE setting='password'");
 	$r = $pass_result->fetch_row();
 	$oldpass = $r[0];
 
