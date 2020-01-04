@@ -46,9 +46,9 @@ include("functions.php");
     <ul>
 		<li><a href="edit.php"><?php echo $l_side_add; ?></a></li>
 		<?php
-		$result = mysql_query("SELECT s.title, SUM(IF(i.done=0,1,0)) AS undone, SUM(IF(i.done=1,1,0)) AS finished
+		$result = $mysqli->query("SELECT s.title, SUM(IF(i.done=0,1,0)) AS undone, SUM(IF(i.done=1,1,0)) AS finished
 			FROM sections s LEFT JOIN items i ON s.title = i.section GROUP BY s.title ORDER BY s.id");
-		while($r=mysql_fetch_assoc($result))
+		while($r=$result->fetch_assoc())
 		{
 			echo '<li><a class="' . $r['title'] . '" href="display.php?display=section&amp;section=' . $r['title'] . '&amp;sort=date">' . $l_sectionlist[$r['title']] . ' <span class="noundone">(' . $r['finished'] . ')</span>&nbsp;<span class="nodone">(' . $r['undone'] . ')</span></a></li>' . "\n";
 		}

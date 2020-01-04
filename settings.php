@@ -8,12 +8,12 @@ if (isset($_POST["submit"]))
 	$settingsstatus = '';
 	
 	$tips = (isset($_POST['tips'])) ? 1 : 0;
-	$result = mysql_query("UPDATE settings SET value='$tips' WHERE setting='tips'");
+	$result = $mysqli->query("UPDATE settings SET value='$tips' WHERE setting='tips'");
 	if ($tips) $settingsstatus .= $l_cp_display_tipson;
 	else $settingsstatus .= $l_cp_display_tipsoff;
 
 	$style = $_POST['style'];
-	$result = mysql_query("UPDATE settings SET value='$style' WHERE setting='style'");
+	$result = $mysqli->query("UPDATE settings SET value='$style' WHERE setting='style'");
 	if ($style == 'none') $settingsstatus .= "<br />".$l_cp_display_defaultcss;
 	else $settingsstatus .= "<br />".$style;
 	
@@ -24,17 +24,17 @@ if (isset($_POST["submit"]))
 else $updatedblock = '';
 
 //Show/Hide Tips checkbox
-$result = mysql_query("SELECT * FROM settings WHERE setting='tips'");
-while ($r=mysql_fetch_array($result))
+$result = $mysqli->query("SELECT * FROM settings WHERE setting='tips'");
+while ($r=$result->fetch_array())
 {
 	$checked = ($r['value']) ? ' checked="checked"' : '';
 	$tipsfield = $l_cp_display_tips.": <input type='checkbox' value='Display tips' name='tips'$checked />";
 }
 
 //Stylesheets code
-$result = mysql_query("SELECT * FROM settings WHERE setting='style'");
+$result = $mysqli->query("SELECT * FROM settings WHERE setting='style'");
 $styleoptions = '';
-while($r=mysql_fetch_array($result))
+while($r=$result->fetch_array())
 {
 	//Define the folder and path
 	$folder="styles";
@@ -62,12 +62,14 @@ while($r=mysql_fetch_array($result))
 if (isset($_POST["passchanges"]))
 {
 	//Get the salt
-	$salt_result = mysql_query("SELECT * FROM settings WHERE setting='salt'");
-	$salt = mysql_result($salt_result,0,2);
+	$salt_result = $mysqli->query("SELECT value FROM settings WHERE setting='salt'");
+	$r = $salt_result->fetch_row();
+	$salt = $r[0];
 
 	//Get the hashed password
-	$pass_result = mysql_query("SELECT * FROM settings WHERE setting='password'");
-	$oldpass = mysql_result($pass_result,0,2);
+	$pass_result = mysql_query("SELECT value FROM settings WHERE setting='password'");
+	$r = $pass_result->fetch_row();
+	$oldpass = $r[0];
 
 	//Massive error trapping going on here
 	$submitted = md5($_POST['currentpass']);
@@ -81,19 +83,20 @@ if (isset($_POST["passchanges"]))
 			$newsalt = substr(uniqid(rand(), true), 0, 5);
 			$secure_password = md5($_POST['newpass1']);
 			$newtotal = $secure_password.$newsalt;
-			mysql_query("UPDATE settings SET value='$newsalt' WHERE setting='salt'");
-			mysql_query("UPDATE settings SET value='$newtotal' WHERE setting='password'");
+			$mysqli->query("UPDATE settings SET value='$newsalt' WHERE setting='salt'");
+			$mysqli->query("UPDATE settings SET value='$newtotal' WHERE setting='password'");
 		}
 		$svalue = (isset($_POST['sessions'])) ? 1 : 0;
-		$result = mysql_query("UPDATE settings SET value='$svalue' WHERE setting='sessions'");
+		$result = $mysqli->query("UPDATE settings SET value='$svalue' WHERE setting='sessions'");
 		$pwmessage = $l_cp_password_updated;
 	}
 }
 else $pwmessage = '';
 
 //"Use Passwords" checkbox
-$use_result = mysql_query("SELECT * FROM settings WHERE setting='sessions'");
-$use = mysql_result($use_result,0,2);
+$use_result = $mysqli->query("SELECT value FROM settings WHERE setting='sessions'");
+$res = $use_result->fetch_row();
+$use = $res[0];
 $checked = ($use) ? ' checked="checked"' : '';
 $usepwfield = $l_cp_password_use.": <input type='checkbox' value='Sessions' name='sessions'$checked />";
 
@@ -101,9 +104,9 @@ $usepwfield = $l_cp_password_use.": <input type='checkbox' value='Sessions' name
 if (!isset($_GET['delete'])) $purgetext = '<a href="#" onclick="check()">' . $l_cp_tools_purge . '</a>';
 else
 {
-	$del_rows = mysql_query("SELECT * FROM items WHERE done=1");
-	$num_affected = mysql_num_rows($del_rows);
-	mysql_query("DELETE FROM items WHERE done=1");
+	$del_rows = $mysqli->query("SELECT * FROM items WHERE done=1");
+	$num_affected = $del_rows->num_rows;
+	$mysqli->query("DELETE FROM items WHERE done=1");
 	$purgetext = $num_affected.$l_cp_tools_purged;
 }
 
@@ -111,8 +114,8 @@ else
 if(!isset($_GET['export'])) $exporttext = '<a href="settings.php?export=csv">' . $l_cp_tools_export . '</a>';
 else
 {
-	$export_result = mysql_query("SELECT * FROM items");
-	while($r=mysql_fetch_array($export_result))
+	$result = $mysqli->query("SELECT * FROM items");
+	while($r=$result->fetch_array())
 	{
 		$title=$r["title"];
 		$date=$r["date"];

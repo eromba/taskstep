@@ -4,7 +4,7 @@
 
 $server = 'localhost';	//MySQL server
 $db = 'taskstep';	//MySQL database name
-$user = 'root';	//MySQL username
-$password = '';	//MySQL password
+$user = 'taskstep';	//MySQL username
+$password = 'taskstep';	//MySQL password
 $language = "en";
 ?>

@@ -6,14 +6,14 @@ $sortby = (isset($_GET["sort"])) ? $_GET["sort"] : '';
 $type = (isset($_GET['type'])) ? $_GET['type'] : '';
 
 //display all the projects/contexts
-$result = mysql_query("select * from {$type}s order by title");
+$result = $mysqli->query("select * from {$type}s order by title");
 echo "<div id='editlist'>\n<p>".$l_dbp_l1[$type]."</p>";
 
 //display the add project/context link
 echo "<a href='edit_types.php?type=$type&amp;cmd=add' class='listlinkssmart'><img src='images/add.png' alt='' /> ".$l_dbp_add[$type]."</a>";
 
 //run the while loop that grabs all the projects/contexts
-while($r=mysql_fetch_array($result)) 
+while($r=$result->fetch_array())
 { 
 	//grab the title and the ID of the project/context
 	$title=$r["title"];

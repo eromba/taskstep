@@ -1,12 +1,11 @@
 <?php
 function connect(){
-	global $server, $user, $password, $db;
-	//connect to mysql
-	//change user and password to your mySQL name and password
-	mysql_connect($server,$user,$password); 
-		
-	//select which database you want to edit
-	mysql_select_db($db);
+	global $mysqli, $server, $user, $password, $db;
+
+	if (!($mysqli and $mysqli->ping())) {
+		$mysqli = new mysqli($server, $user, $password, $db); 
+	}
+	return $mysqli;
 }
 
 function pagespecific(){
@@ -60,22 +59,23 @@ function pagespecific(){
 }
 
 function stylesheet(){
-	$result = mysql_query("SELECT * FROM settings WHERE setting='style'");
-	while($r=mysql_fetch_array($result))
+	global $mysqli;
+	$result = $mysqli->query("SELECT * FROM settings WHERE setting='style'");
+	while($r = $result->fetch_array())
 	{
 		echo "<link rel='stylesheet' type='text/css' href='styles/".$r['value']."' media='screen' />";	//Use the stylesheet selected in the database
 	}
 }
 
 function display_items($display = '', $section = '', $tid = '', $sortby = ''){
-	global $result, $l_items_do, $l_items_edit, $l_items_del, $l_items_undo;
+	global $mysqli, $result, $l_items_do, $l_items_edit, $l_items_del, $l_items_undo;
 
 	if ($section) $section = 'section=' . $section . '&amp;';
 	if ($tid) $tid = 'tid=' . $tid . '&amp;';
 	if ($sortby) $sortby = 'sort=' . $sortby . '&amp;';
 
 	//grab all the content
-	while($r=mysql_fetch_array($result))
+	while($r=$result->fetch_array())
 	{	
 	//the format is $variable = $r["nameofmysqlcolumn"];
 	$title=htmlentities($r["title"]);
@@ -132,16 +132,16 @@ function display_items($display = '', $section = '', $tid = '', $sortby = ''){
 }
 
 function display_frontpage(){
-	global $l_sectionlist, $l_items_do, $l_items_edit, $l_index_noimmediate;
+	global $mysqli, $l_sectionlist, $l_items_do, $l_items_edit, $l_index_noimmediate;
 	//select the table
 	$todaydate = date("Y-m-d");
-	$result = mysql_query("SELECT * FROM items WHERE date <= '$todaydate' AND done='0' AND date != '00-00-0000' OR section='immediate' AND done='0' ORDER BY date LIMIT 5");
-	$numrows=mysql_num_rows($result);
+	$result = $mysqli->query("SELECT * FROM items WHERE date <= '$todaydate' AND done='0' AND date != '00-00-0000' OR section='immediate' AND done='0' ORDER BY date LIMIT 5");
+	$numrows= $result->num_rows;
 	?>
 	<div id="immediateblock">
 	<h2><img src="images/lightning.png" alt="" /> <?php echo $l_sectionlist['immediate'] ?> (<?php echo $numrows; ?>)</h2>
 	<?php
-	while($r=mysql_fetch_array($result))
+	while($r=$result->fetch_array())
 	{	
 	  	 //the format is $variable = $r["nameofmysqlcolumn"];
 	  	

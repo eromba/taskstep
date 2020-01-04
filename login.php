@@ -4,14 +4,14 @@ session_start();
 include("config.php");
 include("includes/functions.php");
 
-connect();
+$mysqli = connect();
 
 $failed = false;
 
 if (isset($_POST["submit"]))
 {
-	$result = mysql_query("SELECT setting,value FROM settings WHERE setting='password' OR setting='salt'");
-	while($r=mysql_fetch_assoc($result))
+	$result = $mysqli->query("SELECT setting,value FROM settings WHERE setting='password' OR setting='salt'");
+	while($r=$result->fetch_assoc())
 	{
 		$setting[$r['setting']] = $r['value'];	//Build a multi-dimensional array containing the returned rows
 	}
@@ -58,9 +58,9 @@ include("lang/".$language.".php");
 <!--Open container-->
 <div id="container">
 <?php
-$result = mysql_query("SELECT * FROM settings WHERE setting='sessions'");
+$result = $mysqli->query("SELECT * FROM settings WHERE setting='sessions'");
 
-while($r3=mysql_fetch_array($result))
+while($r3=$result->fetch_array())
 {
   $sessionssetting = $r3["value"];
 }
