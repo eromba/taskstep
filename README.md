@@ -1,4 +1,4 @@
-[TaskStep] - Todo list manager for local PHP servers
+TaskStep - Todo list manager for local PHP servers
 ================================
 
 Features
@@ -35,7 +35,7 @@ GRANT ALL PRIVILEGES ON taskstep.* TO 'taskstep'@'localhost';
 Project History
 ---
 
-TaskStep was originally designed by [Rob Lowcock](http://www.cunningtitle.com),
+TaskStep was originally designed by [Rob Lowcock](https://github.com/rob-lowcock),
 who began the project in 2006. In March 2008, he handed it off to 
-[eromba](https://www.github.com/eromba), after refactored much of the existing
+[Ethan Romba](https://www.github.com/eromba), after refactored much of the existing
 code base.

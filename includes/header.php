@@ -25,11 +25,11 @@ include("functions.php");
 
 <!--Header-->
 <div id="header">
-<h1><img src="images/icon.png" alt="" style="vertical-align:middle"/>&nbsp;<a href="index.php">TaskStep  <span class="subtitle"> 1.0</span></a></h1>
+<h1><img src="images/icon.png" alt="" style="vertical-align:middle"/>&nbsp;<a href="index.php">TaskStep <span class="subtitle">1.1</span></a></h1>
 </div>
 <div id="headernav">
 	<ul>
-		<li><a href="display.php?display=today&amp;sort=done"><img src="images/calendar_view_day.png" alt="" /></a> <a href="display.php?display=today&amp;sort=done"><?php echo $l_nav_today; ?>: <?php echo date("jS F Y"); ?></a></li>
+		<li><a href="display.php?display=today&amp;sort=done"><img src="images/calendar_view_day.png" alt="" /></a> <a href="display.php?display=today&amp;sort=done"><?php echo $l_nav_today; ?>: <?php echo date($df_menu); ?></a></li>
 		<li><a href="index.php"><img src="images/house.png" alt="" /></a> <a href="index.php"><?php echo $l_nav_home; ?></a></li>
 		<li><a href="display.php?display=all&amp;sort=date"><img src="images/page_white_text.png" alt="" /></a> <a href="display.php?display=all&amp;sort=date"><?php echo $l_nav_allitems; ?></a></li>
 		<li><a href="display_type.php?type=context"><img src="images/context.png" alt="" /></a> <a href="display_type.php?type=context"><?php echo $l_nav_context; ?></a></li>

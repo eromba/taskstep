@@ -68,7 +68,7 @@ function stylesheet(){
 }
 
 function display_items($display = '', $section = '', $tid = '', $sortby = ''){
-	global $mysqli, $result, $l_items_do, $l_items_edit, $l_items_del, $l_items_undo;
+	global $mysqli, $result, $l_items_do, $l_items_edit, $l_items_del, $l_items_undo, $df_task;
 
 	if ($section) $section = 'section=' . $section . '&amp;';
 	if ($tid) $tid = 'tid=' . $tid . '&amp;';
@@ -80,6 +80,7 @@ function display_items($display = '', $section = '', $tid = '', $sortby = ''){
 	//the format is $variable = $r["nameofmysqlcolumn"];
 	$title=htmlentities($r["title"]);
 	$date=$r["date"];
+	$date_display=date($df_task, strtotime($date));
 	$notes=htmlentities($r["notes"]);
 	$urlfull=htmlentities($r["url"]);
 	$done=$r["done"];
@@ -106,7 +107,7 @@ function display_items($display = '', $section = '', $tid = '', $sortby = ''){
 	//if the action is marked as done, then do not apply any current or old markings to it
     if($done == 1)
 	{
-		echo "<div class='np'> <span style='text-decoration:line-through;'> $title - $date | $project | $context</span>";
+		echo "<div class='np'> <span style='text-decoration:line-through;'> $title - $date_display | $project | $context</span>";
 		$cmd = 'undo';
 		$link = $l_items_undo;
 		$icon = 'accept';
@@ -116,13 +117,13 @@ function display_items($display = '', $section = '', $tid = '', $sortby = ''){
 	elseif($date == 00-00-0000) echo "<div class='np'> $title | $project | $context";
 
 	//if the date is equal to the current date, flag it as current
-   	elseif(date("Y-m-d") == $date) echo "<div class='current'><img src='images/flag_yellow.png' alt='' /> $title - $date | $project | $context";
+   	elseif(date("Y-m-d") == $date) echo "<div class='current'><img src='images/flag_yellow.png' alt='' /> $title - $date_display | $project | $context";
 
 	//if the date is older than the current date, flag it as old
-	elseif(date("Y-m-d") > $date) echo "<div class='old'><img src='images/flag_red.png' alt='' /> $title - $date | $project | $context";
+	elseif(date("Y-m-d") > $date) echo "<div class='old'><img src='images/flag_red.png' alt='' /> $title - $date_display | $project | $context";
 
 	//if the date is neither of these, don't flag it.
-	else echo "<div class='np'> $title - $date | $project | $context";
+	else echo "<div class='np'> $title - $date_display | $project | $context";
 	
 	echo "<a href='display.php?display=$display&amp;{$section}{$tid}{$sortby}cmd=delete&amp;id=$id' title='$l_items_del' class='actionicon'><img src='images/bin_empty.png' alt='$l_items_del' /></a>
 	<a href='edit.php?id=$id' title='$l_items_edit' class='actionicon'><img src='images/pencil.png' alt='$l_items_edit' /></a> 
@@ -132,7 +133,7 @@ function display_items($display = '', $section = '', $tid = '', $sortby = ''){
 }
 
 function display_frontpage(){
-	global $mysqli, $l_sectionlist, $l_items_do, $l_items_edit, $l_index_noimmediate;
+	global $mysqli, $l_sectionlist, $l_items_do, $l_items_edit, $l_index_noimmediate, $df_task;
 	//select the table
 	$todaydate = date("Y-m-d");
 	$result = $mysqli->query("SELECT * FROM items WHERE date <= '$todaydate' AND done='0' AND date != '00-00-0000' OR section='immediate' AND done='0' ORDER BY date LIMIT 5");
@@ -144,9 +145,9 @@ function display_frontpage(){
 	while($r=$result->fetch_array())
 	{	
 	  	 //the format is $variable = $r["nameofmysqlcolumn"];
-	  	
+
 		$title=htmlentities($r["title"]);
-		$date = ($r["date"] != 00-00-0000) ? ' - '.$r["date"] : '';
+		$date = ($r["date"] != 00-00-0000) ? ' - '.date($df_task, strtotime($r["date"])) : '';
 		$notes=htmlentities($r["notes"]);
 		$url=htmlentities($r["url"]);
 		$done=$r["done"];

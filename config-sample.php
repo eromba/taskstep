@@ -4,6 +4,8 @@
 
 $server = 'localhost';	// MySQL server
 $db = 'taskstep';	// MySQL database name
-$user = 'taskstep';	// MySQL username
-$password = 'taskstep';	// MySQL password
+$user = 'root';		// MySQL username
+$password = '';		// MySQL password
 $language = 'en';	// GUI language
+$df_menu = 'jS F Y';	// Menu date display format
+$df_task = 'Y-m-d';	// Task date display format
