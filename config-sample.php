@@ -1,6 +1,6 @@
 <?php
 // Sample Config File
-// Copy this file to "config.php" and adapt it according to your locar requirements 
+// Copy this file to "config.php" and adapt it according to your local requirements 
 
 $server = 'localhost';	// MySQL server
 $db = 'taskstep';	// MySQL database name
