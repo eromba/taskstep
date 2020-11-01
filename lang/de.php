@@ -4,8 +4,8 @@
 	//
 	// The language system uses variables for every sentence that needs to be translated.
 	// If you want to contribute a translation, just replace each sentence accordingly.
-	// Please do consider submitting translations to the forums.
-	// http://cunningtitle.com/forum/
+	// Please consider sharing new translations by creating a pull request on GitHub:
+	// https://github.com/eromba/taskstep
 	//
 	// Longer sections which include paragraphs include HTML. Single words or sentences do not.
 	// Just edit the bits in quotes to change what appears as text.
