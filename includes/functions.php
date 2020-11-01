@@ -68,7 +68,7 @@ function stylesheet(){
 }
 
 function display_items($display = '', $section = '', $tid = '', $sortby = ''){
-	global $mysqli, $result, $l_items_do, $l_items_edit, $l_items_del, $l_items_undo, $df_task;
+	global $mysqli, $result, $l_items_do, $l_items_edit, $l_items_del, $l_items_undo, $task_date_format;
 
 	if ($section) $section = 'section=' . $section . '&amp;';
 	if ($tid) $tid = 'tid=' . $tid . '&amp;';
@@ -80,7 +80,7 @@ function display_items($display = '', $section = '', $tid = '', $sortby = ''){
 	//the format is $variable = $r["nameofmysqlcolumn"];
 	$title=htmlentities($r["title"]);
 	$date=$r["date"];
-	$date_display=date($df_task, strtotime($date));
+	$date_display=date($task_date_format, strtotime($date));
 	$notes=htmlentities($r["notes"]);
 	$urlfull=htmlentities($r["url"]);
 	$done=$r["done"];
@@ -133,7 +133,7 @@ function display_items($display = '', $section = '', $tid = '', $sortby = ''){
 }
 
 function display_frontpage(){
-	global $mysqli, $l_sectionlist, $l_items_do, $l_items_edit, $l_index_noimmediate, $df_task;
+	global $mysqli, $l_sectionlist, $l_items_do, $l_items_edit, $l_index_noimmediate, $task_date_format;
 	//select the table
 	$todaydate = date("Y-m-d");
 	$result = $mysqli->query("SELECT * FROM items WHERE date <= '$todaydate' AND done='0' AND date != '00-00-0000' OR section='immediate' AND done='0' ORDER BY date LIMIT 5");
@@ -147,7 +147,7 @@ function display_frontpage(){
 	  	 //the format is $variable = $r["nameofmysqlcolumn"];
 
 		$title=htmlentities($r["title"]);
-		$date = ($r["date"] != 00-00-0000) ? ' - '.date($df_task, strtotime($r["date"])) : '';
+		$date = ($r["date"] != 00-00-0000) ? ' - '.date($task_date_format, strtotime($r["date"])) : '';
 		$notes=htmlentities($r["notes"]);
 		$url=htmlentities($r["url"]);
 		$done=$r["done"];

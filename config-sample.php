@@ -7,5 +7,5 @@ $db = 'taskstep';	// MySQL database name
 $user = 'root';		// MySQL username
 $password = '';		// MySQL password
 $language = 'en';	// GUI language
-$df_menu = 'jS F Y';	// Menu date display format
-$df_task = 'Y-m-d';	// Task date display format
+$menu_date_format = 'jS F Y';	// Menu date display format
+$task_date_format = 'Y-m-d';	// Task date display format

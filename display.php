@@ -64,7 +64,7 @@ switch ($display)
 	break;
 	case "today":
 		$today = date("Y-m-d");
-		$todayf = date($df_menu);
+		$todayf = date($menu_date_format);
 		$result = $mysqli->query("SELECT * FROM items WHERE date='$today' ORDER BY $sortby");
 		echo "<div id='sectiontitle'><h1>".$l_nav_today.": $todayf</h1></div>";
 		$noresultsurl = '';
