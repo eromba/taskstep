@@ -35,7 +35,4 @@ GRANT ALL PRIVILEGES ON taskstep.* TO 'taskstep'@'localhost';
 Project History
 ---
 
-TaskStep was originally designed by [Rob Lowcock](https://github.com/rob-lowcock),
-who began the project in 2006. In March 2008, he handed it off to 
-[Ethan Romba](https://www.github.com/eromba), after refactored much of the existing
-code base.
+TaskStep was originally designed by [Rob Lowcock](https://github.com/rob-lowcock) in 2006, significantly refactored by [Ethan Romba](https://www.github.com/eromba) in 2008, and given much-needed updates by [Thomas Hooge](https://www.github.com/thooge) in 2020.
