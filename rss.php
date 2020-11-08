@@ -19,9 +19,9 @@ include("includes/functions.php");
 
 connect();
 
-$result = mysql_query("SELECT * FROM items");
+$result = $mysqli->query("SELECT * FROM items");
 
-while ($r=mysql_fetch_assoc($result))
+while ($r=$result->fetch_assoc())
 {
 	$title=htmlentities($r["title"]);
 	$date = ($r["date"] != 00-00-0000) ? $r["date"]." | " : '';

@@ -16,9 +16,6 @@ include("lang/".$language.".php");
 <?php
 $print = (isset($_GET['print'])) ? $_GET['print'] : '';
 
-mysql_connect($server,$user,$password);
-mysql_select_db($db);
-
 switch ($print)
 {
 case 'section':
@@ -27,7 +24,9 @@ case 'section':
 	// Modified by Cord
 	// --28/8/07--
 	foreach($l_sectionlist as $k=>$v)
-	{		$l_sectionlistkeys[]=$k;	}
+	{
+		$l_sectionlistkeys[]=$k;
+	}
 	if(isset($_GET["section"]) && in_array($_GET["section"],$l_sectionlistkeys))
 	{
 	  $currentsection=$_GET["section"];
@@ -37,24 +36,24 @@ case 'section':
 	{
 	  echo "<div class='error'><img src='images/exclamation.png' alt='' /> $l_print_sectionnotfound </div>";
 	}
-	$result = mysql_query("SELECT * FROM items WHERE section='$currentsection' ORDER BY date");	//select the table
+	$result = $mysqli->query("SELECT * FROM items WHERE section='$currentsection' ORDER BY date");	//select the table
 break;
 case 'project':
 case 'context':
 	$tid = $_GET["id"];
-	$idresult = mysql_query("SELECT * FROM {$print}s WHERE id='$tid'");	//Select the row
-	$title = mysql_result($idresult,0,1);	//Select the results of the query in the format (query,row,column)
-	$result = mysql_query("SELECT * FROM items WHERE $print='$title' ORDER BY date");	//select the table
+	$idresult = $mysqli_query("SELECT title FROM {$print}s WHERE id='$tid'");	//Select the row
+	$title = $idresult->fetch_row()[0];
+	$result = $mysqli->query("SELECT * FROM items WHERE $print='$title' ORDER BY date");	//select the table
 break;
 case 'all':
 	$title = $l_print_printalltasks;
-	$result = mysql_query("SELECT * FROM items ORDER BY done,title");	//select the table
+	$result = $mysqli->query("SELECT * FROM items ORDER BY done,title");	//select the table
 break;
 case 'today':
 	$fancytoday = date("jS M Y");
 	$title = "$l_print_printtoday ($fancytoday)";
 	$today = date("Y-m-d");
-	$result = mysql_query("SELECT * FROM items WHERE date='$today ORDER BY done,title");	//select the table
+	$result = $mysqli->query("SELECT * FROM items WHERE date='$today ORDER BY done,title");	//select the table
 break;
 }
 
@@ -64,7 +63,7 @@ if(!isset($cmd))	//If cmd is not set
 {
 	echo"<ul>";
 	//grab all the content
-	while($r=mysql_fetch_array($result))
+	while($r=$result->fetch_array())
 	{
 	   //the format is $variable = $r["nameofmysqlcolumn"];
 

@@ -17,8 +17,10 @@
 
 <?php
 include("../config.php");
-mysql_connect($server,$user,$password);
-mysql_select_db($db);
+$mysqli = new mysqli($server, $user, $password, $db);
+if ($mysqli->connect_errno) {
+   die("Connection error: " . $mysqli->connect_error);
+}
 
 $success = '<div class="success"><img src="../images/database_go.png" alt="" />&nbsp;';
 $failure = '<div class="error"><img src="../images/database_error.png" alt="" />&nbsp;';
@@ -35,10 +37,10 @@ $sql='CREATE TABLE `items` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `project` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
    . ' KEY `id_2` ( `id` ) )'; 
-if(mysql_query($sql)) echo $success.'Items table created successfully</div>' . "\n";
+if($mysqli->query($sql)) echo $success.'Items table created successfully</div>' . "\n";
 else 
 {
-   echo $failure.'Failed to create items table. The error was: <b>' . mysql_error() . '</b></div>' . "\n";
+   echo $failure.'Failed to create items table. The error was: <b>' . $mysqli->error . '</b></div>' . "\n";
    $failed = true;
 }
 ?>
@@ -52,10 +54,10 @@ $sql='CREATE TABLE `contexts` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `title` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
    . ' KEY `id_2` ( `id` ) )'; 
-if(mysql_query($sql)) echo $success.'Contexts table created successfully</div>' . "\n";
+if($mysqli->query($sql)) echo $success.'Contexts table created successfully</div>' . "\n";
 else 
 {
-   echo $failure.'Failed to create contexts table. The error was: <b>' . mysql_error() . '</b></div>' . "\n";
+   echo $failure.'Failed to create contexts table. The error was: <b>' . $mysqli->error . '</b></div>' . "\n";
    $failed = true;
 }
 ?>
@@ -70,10 +72,10 @@ $sql='CREATE TABLE `sections` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `fancytitle` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
    . ' KEY `id_2` ( `id` ) )'; 
-if(mysql_query($sql)) echo $success.'Sections table created successfully</div>' . "\n";
+if($mysqli->query($sql)) echo $success.'Sections table created successfully</div>' . "\n";
 else 
 {
-   echo $failure.'Failed to create sections table. The error was: <b>' . mysql_error() . '</b></div>' . "\n";
+   echo $failure.'Failed to create sections table. The error was: <b>' . $mysqli->error . '</b></div>' . "\n";
    $failed = true;
 }
 ?>
@@ -87,10 +89,10 @@ $sql='CREATE TABLE `projects` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `title` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
    . ' KEY `id_2` ( `id` ) )'; 
-if(mysql_query($sql)) echo $success.'Projects table created successfully</div>' . "\n";
+if($mysqli->query($sql)) echo $success.'Projects table created successfully</div>' . "\n";
 else 
 {
-   echo $failure.'Failed to create projects table. The error was: <b>' . mysql_error() . '</b></div>' . "\n";
+   echo $failure.'Failed to create projects table. The error was: <b>' . $mysqli->error . '</b></div>' . "\n";
    $failed = true;
 }
 ?>
@@ -105,10 +107,10 @@ $sql='CREATE TABLE `settings` ( `id` int( 11 ) NOT NULL AUTO_INCREMENT ,'
    . ' `value` text NOT NULL ,'
    . ' PRIMARY KEY ( `id` ) ,'
    . ' KEY `id_2` ( `id` ) )'; 
-if(mysql_query($sql)) echo $success.'Settings table created successfully</div>' . "\n";
+if($mysqli->query($sql)) echo $success.'Settings table created successfully</div>' . "\n";
 else 
 {
-   echo $failure.'Failed to create settings table. The error was: <b>' . mysql_error() . '</b></div>' . "\n";
+   echo $failure.'Failed to create settings table. The error was: <b>' . $mysqli->error . '</b></div>' . "\n";
    $failed = true;
 }
 ?>
@@ -138,21 +140,21 @@ $total = $secure_password.$salt;
 //table columns = id, title, message, who, date, time
 //post variables = $title, $message, '$who, $date, $time
 
-if(mysql_query("INSERT INTO items (title,date,section,notes,url,done,context,project)".
+if($mysqli->query("INSERT INTO items (title,date,section,notes,url,done,context,project)".
       "VALUES ('$title', '$date', '$section', '$notes', '$url', '$done', '$context', '$project')")
-	  AND mysql_query("INSERT INTO contexts (title)".
+	  AND $mysqli->query("INSERT INTO contexts (title)".
       "VALUES ('SampleContext')")
-	  AND mysql_query("INSERT INTO projects (title)".
+	  AND $mysqli->query("INSERT INTO projects (title)".
       "VALUES ('SampleProject')")
-	  AND mysql_query("INSERT INTO sections (title,fancytitle)".
+	  AND $mysqli->query("INSERT INTO sections (title,fancytitle)".
       "VALUES ('ideas', 'Ideas'),('tobuy', 'Might want to buy'),('immediate', 'Immediate'),('week', 'This week'),('month', 'This month'),('year', 'This year'),('lifetime', 'Some day maybe')")
-      AND mysql_query("INSERT INTO settings (setting,value)".
+      AND $mysqli->query("INSERT INTO settings (setting,value)".
       "VALUES ('tips', '$tips'),('style', 'default.css'),('password', '$total'),('salt', '$salt'),('sessions', '1')")){
 	    echo '<div class="success"><img src="../images/table_go.png" alt="" />&nbsp;Sample data inserted successfully</div><br />';
 	    echo '<div class="success"><img src="../images/shield.png" alt="" />&nbsp;<b>Important!</b> The default password is "taskstep" (without the quotes). Change this as soon as possible.</div>';
 	}
 else{
-	echo '<div class="error"><img src="../images/table_error.png" alt="" />&nbsp;Failed to insert data. The error given was: <b>' . mysql_error() . "</b></div>\n";
+	echo '<div class="error"><img src="../images/table_error.png" alt="" />&nbsp;Failed to insert data. The error given was: <b>' . $mysqli->error . "</b></div>\n";
 	$failed = true;
 }
 

@@ -25,11 +25,11 @@ include("functions.php");
 
 <!--Header-->
 <div id="header">
-<h1><img src="images/icon.png" alt="" style="vertical-align:middle"/>&nbsp;<a href="index.php">TaskStep  <span class="subtitle"> 1.0</span></a></h1>
+<h1><img src="images/icon.png" alt="" style="vertical-align:middle"/>&nbsp;<a href="index.php">TaskStep <span class="subtitle">1.1</span></a></h1>
 </div>
 <div id="headernav">
 	<ul>
-		<li><a href="display.php?display=today&amp;sort=done"><img src="images/calendar_view_day.png" alt="" /></a> <a href="display.php?display=today&amp;sort=done"><?php echo $l_nav_today; ?>: <?php echo date("jS F Y"); ?></a></li>
+		<li><a href="display.php?display=today&amp;sort=done"><img src="images/calendar_view_day.png" alt="" /></a> <a href="display.php?display=today&amp;sort=done"><?php echo $l_nav_today; ?>: <?php echo date($menu_date_format); ?></a></li>
 		<li><a href="index.php"><img src="images/house.png" alt="" /></a> <a href="index.php"><?php echo $l_nav_home; ?></a></li>
 		<li><a href="display.php?display=all&amp;sort=date"><img src="images/page_white_text.png" alt="" /></a> <a href="display.php?display=all&amp;sort=date"><?php echo $l_nav_allitems; ?></a></li>
 		<li><a href="display_type.php?type=context"><img src="images/context.png" alt="" /></a> <a href="display_type.php?type=context"><?php echo $l_nav_context; ?></a></li>
@@ -46,9 +46,9 @@ include("functions.php");
     <ul>
 		<li><a href="edit.php"><?php echo $l_side_add; ?></a></li>
 		<?php
-		$result = mysql_query("SELECT s.title, SUM(IF(i.done=0,1,0)) AS undone, SUM(IF(i.done=1,1,0)) AS finished
+		$result = $mysqli->query("SELECT s.title, SUM(IF(i.done=0,1,0)) AS undone, SUM(IF(i.done=1,1,0)) AS finished
 			FROM sections s LEFT JOIN items i ON s.title = i.section GROUP BY s.title ORDER BY s.id");
-		while($r=mysql_fetch_assoc($result))
+		while($r=$result->fetch_assoc())
 		{
 			echo '<li><a class="' . $r['title'] . '" href="display.php?display=section&amp;section=' . $r['title'] . '&amp;sort=date">' . $l_sectionlist[$r['title']] . ' <span class="noundone">(' . $r['finished'] . ')</span>&nbsp;<span class="nodone">(' . $r['undone'] . ')</span></a></li>' . "\n";
 		}

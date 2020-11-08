@@ -77,14 +77,7 @@ p{
 <body>
 
 <div id="container">
-<h1><img src="images/icon.png" alt="" /> TaskStep 1.0 - Readme</h1>
-
-<div class="notice">
-As of version 0.4 there is a new passwords system, so when you have updated
-or installed TaskStep you will need to enter a password! 
-
-<p>See below for details.</p>
-</div>
+<h1><img src="images/icon.png" alt="" /> TaskStep 1.1 - Readme</h1>
 
 <h2>Introduction</h2>
 
@@ -113,15 +106,15 @@ be installed there and used via an internet connection.</p>
   </li>
   <li>Start your AMP server</li>
   <li>Create a new MySQL database called "taskstep" (usually done through
-    phpMyAdmin) 
+    phpMyAdmin)
     <ul>
       <li>If you are using XAMPP, you can access your phpMyAdmin control
         panel at <a
         href="http://localhost/phpmyadmin/">http://localhost/phpmyadmin/</a></li>
     </ul>
   </li>
-  <li>Modify the TaskStep file "config.php" using a text editor (such as
-    Notepad) 
+  <li>Create the TaskStep configuration file "config.php" based on the
+    sample "config-sample.php" using a text editor (such as Notepad)
     <ul>
       <li>Change the MySQL information (server, username, and password)
         appropriately</li>
@@ -140,8 +133,8 @@ be installed there and used via an internet connection.</p>
   <li>Upload the contents of this zip file to a subfolder on your web
   server</li>
   <li>Create a new MySQL database called "taskstep"</li>
-  <li>Modify the TaskStep file "config.php" using a text editor (such as
-    Notepad) 
+  <li>Create the TaskStep configuration file "config.php" based on the
+    sample "config-sample.php" using a text editor (such as Notepad)
     <ul>
       <li>Change the MySQL information (server, username, and password)
         appropriately</li>
@@ -153,37 +146,22 @@ be installed there and used via an internet connection.</p>
     folder as a security precaution</li>
 </ol>
 
-<p>If the installation script shows any red boxes, then there are problems,
-in which case you can ask for assistance at <a
-href="http://cunningtitle.com/forum/">the forums</a>.</p>
-
 <h2>Updating</h2>
 <ol>
   <li>Backup any custom styles</li>
-  <li>Delete <strong>all</strong> files and folders in your TaskStep folder
-    on your AMP server or web server 
+  <li>Delete <strong>all but config.php</strong> files and folders in your
+    TaskStep folder on your AMP server or web server
     <ul>
       <li>Don't worry, your tasks, settings, and other data is kept in the
         MySQL database and will not be erased</li>
     </ul>
   </li>
   <li>Unzip the contents of this zip file to your TaskStep folder</li>
-  <li>Modify the TaskStep file "config.php" using a text editor (such as
-    Notepad) 
-    <ul>
-      <li>Change the MySQL information (server, username, and password)
-        appropriately</li>
-    </ul>
-  </li>
   <li>Go to the file "install/update.php" in your web browser and follow the
     on-screen instructions</li>
   <li>Once the updating process is complete, be sure to delete the "install"
     folder as a security precaution</li>
 </ol>
-
-<p>If the upgrade script shows any red boxes, then there are problems, in
-which case you can ask for assistance at <a
-href="http://cunningtitle.com/forum/">the forums</a>.</p>
 
 <h2>Passwords</h2>
 
@@ -195,10 +173,6 @@ possible.</b> If you are running TaskStep on your own computer, you can
 disable sessions to remove the requirement of a password. This is not
 recommended, and should certainly not be done if you are running it on a
 website. The system is probably not fool-proof, but it is a start.</p>
-
-<p>If you forget your password, ask around in <a
-href="http://cunningtitle.com/forum/">the forums</a> and we'll help you reset
-it.</p>
 
 <h2>License</h2>
 

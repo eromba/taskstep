@@ -12,8 +12,10 @@
 
 <?php
 include("../config.php");
-mysql_connect($server,$user,$password);
-mysql_select_db($db);
+$mysqli = new mysqli($server, $user, $password, $db);
+if ($mysqli->connect_errno) {
+   die("Connection error: " . $mysqli->connect_error);
+}
 
 $success = "<div class='success'><img src='../images/table_go.png' alt='' />&nbsp;Update successful</div>\n";
 $failure = '<div class="error"><img src="../images/table_error.png" alt="" />&nbsp;Looks like there was a problem updating the database. Check your settings. The error was: <b>';
@@ -26,20 +28,20 @@ if (isset($_POST['submit']))
 	case '0.1':
 		echo '<p>0.2 Update - Change "Lifetime" section to "Some day maybe"</p>';
 		$sql="UPDATE sections SET fancytitle='Some day maybe' WHERE title='lifetime'"; 
-		if (mysql_query($sql)) echo $success;
+		if ($mysqli->query($sql)) echo $success;
 		else
 		{
-			echo $failure  . mysql_error() . "</b></div>\n";
+			echo $failure  . $mysqli->error . "</b></div>\n";
 			$failed = true;
 		}
 	case '0.2':
 		echo '<p>0.3 Update - Add Stylesheet column to settings</p>';
 		$sql1 = 'ALTER TABLE `settings` CHANGE `value` `value` TEXT NOT NULL';
 		$sql2 = "INSERT INTO settings (id,setting,value) VALUES ('NULL', 'style', 'none')";
-		if (mysql_query($sql1) && mysql_query($sql2)) echo $success;
+		if ($mysqli->query($sql1) && $mysqli->query($sql2)) echo $success;
 		else
 		{
-			echo $failure  . mysql_error() . "</b></div>\n";
+			echo $failure  . $mysqli->error . "</b></div>\n";
 			$failed = true;
 		}
 	case '0.3':
@@ -50,10 +52,10 @@ if (isset($_POST['submit']))
 		$sql1 = "INSERT INTO settings (id,setting,value) VALUES ('NULL', 'password', '$total')";
 		$sql2 = "INSERT INTO settings (id,setting,value) VALUES ('NULL', 'salt', '$salt')";
 		$sql3 = "INSERT INTO settings (id,setting,value) VALUES ('NULL', 'sessions', '1')";
-		if (mysql_query($sql1) && mysql_query($sql2) && mysql_query($sql3)) echo $success;
+		if ($mysqli->query($sql1) && $mysqli->query($sql2) && $mysqli->query($sql3)) echo $success;
 		else
 		{
-			echo $failure  . mysql_error() . "</b></div>\n";
+			echo $failure  . $mysqli->error . "</b></div>\n";
 			$failed = true;
 		}
 	case '0.4':
@@ -62,10 +64,10 @@ if (isset($_POST['submit']))
 	case '1.0 alpha':
 		echo '<p>1.0 Update - Change default stylesheet</p>';
 		$sql = "UPDATE settings SET value='default.css' WHERE setting='style'";
-		if (mysql_query($sql)) echo $success;
+		if ($mysqli->query($sql)) echo $success;
 		else
 		{
-			echo $failure  . mysql_error() . "</b></div>\n";
+			echo $failure  . $mysqli->error . "</b></div>\n";
 			$failed = true;
 		}
 	break;

@@ -10,11 +10,11 @@ if($postcmd == "edit" && isset($_POST["submit"]))
 {
 	$eid = $_POST["id"];
 	$enewtitle = addslashes($_POST["title"]);
-	$updatequery = mysql_query("UPDATE {$type}s SET title='$enewtitle' WHERE id=$eid");
+	$updatequery = $mysqli->query("UPDATE {$type}s SET title='$enewtitle' WHERE id=$eid");
 	if($updatequery) echo "<div id='updated' class='fade'><img src='images/pencil_go.png' alt=''/> ".$l_msg_updated[$type]."</div>";
 	if($_POST["tasks"]){
 		$eoldtitle = $_POST["oldtitle"];
-		mysql_query("UPDATE items SET $type='$enewtitle' WHERE $type='$eoldtitle'");
+		$mysqli->query("UPDATE items SET $type='$enewtitle' WHERE $type='$eoldtitle'");
 	}
 }
 
@@ -22,7 +22,7 @@ if($postcmd == "edit" && isset($_POST["submit"]))
 if($postcmd == "add" && isset($_POST["add"]))
 {
 	$title = addslashes($_POST["newtitle"]);
-	$result = MYSQL_QUERY("INSERT INTO {$type}s (id,title) VALUES ('NULL', '$title')");
+	$result = $mysqli->query("INSERT INTO {$type}s (id,title) VALUES ('NULL', '$title')");
 	echo "<div id='updated' class='fade'><img src='images/add.png' alt=''/> ".$l_msg_added[$type]."</div>";
 }
 
@@ -30,7 +30,7 @@ if($postcmd == "add" && isset($_POST["add"]))
 if($getcmd=="delete")
 {
     $delid = $_GET["id"];
-	$delquery = mysql_query("DELETE FROM {$type}s WHERE id=$delid");
+	$delquery = $mysqli->query("DELETE FROM {$type}s WHERE id=$delid");
     if($delquery) echo "<div id='deleted' class='fade'><img src='images/bin.png' alt='' /> ".$l_msg_deleted[$type]."</div>";
 }
 
@@ -39,8 +39,8 @@ if(!$getcmd || $getcmd == "delete")
 {
 	echo "<p>".$l_dbp_l2[$type]."</p>";
 	echo "<div id='editlist'><a href='edit_types.php?type=$type&amp;cmd=add' class='listlinkssmart'><img src='images/add.png' alt='' /> ".$l_dbp_add[$type]."</a>";
-	$result = mysql_query("SELECT * FROM {$type}s ORDER BY title");
-	while($r=mysql_fetch_array($result))
+	$result = $mysqli->query("SELECT * FROM {$type}s ORDER BY title");
+	while($r=$result->fetch_array())
 	{
 		$title=$r["title"];
 		$id=$r["id"];
@@ -65,8 +65,8 @@ elseif($getcmd == "edit")
 	
 	//DEBUG echo "This would produce an edit form for the context with id $editid <br />";
 	
-	$editquery = mysql_query("SELECT * FROM {$type}s WHERE id=$editid");
-	while($r=mysql_fetch_array($editquery))
+	$editquery = $mysqli->query("SELECT * FROM {$type}s WHERE id=$editid");
+	while($r=$editquery->fetch_array())
 	{
 		$edittitle = $r["title"];
 		$editid2 = $r["id"];

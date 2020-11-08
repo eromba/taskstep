@@ -7,8 +7,8 @@ if ( isset($_GET["id"]) )	//If 'id' is set in the request URL, then the user is 
 {
 	$type = 'edit';
 	$id = $_GET["id"];   
-	$result = mysql_query("SELECT * FROM items WHERE id=$id");   
-	list($id, $title, $date, $section, $notes, $url, $done, $context, $project) = mysql_fetch_row($result);
+	$result = $mysqli->query("SELECT * FROM items WHERE id=$id");
+	list($id, $title, $date, $section, $notes, $url, $done, $context, $project) = $result->fetch_row();
 	$date = ($date == 00-00-0000) ? '' : $date;
 }
 else if ( isset($_POST["submit"]) )	//Otherwise, if the user has submitted a form, grab the rest of the form data
@@ -30,12 +30,12 @@ else if ( isset($_POST["submit"]) )	//Otherwise, if the user has submitted a for
 	else if ( !empty($_POST['id']) )	//If a task id was also sent in the form data, update that task
 	{
 		$id = $_POST['id'];
-		$result = mysql_query("UPDATE items SET title='$title',date='$date',notes='$notes',url='$url',section='$section',context='$context',project='$project' WHERE id=$id");
+		$result = $mysqli->query("UPDATE items SET title='$title',date='$date',notes='$notes',url='$url',section='$section',context='$context',project='$project' WHERE id=$id");
 		echo "<div id='updated' class='fade'><img src='images/pencil_go.png' alt=''/> ".$l_msg_itemedit."</div>";
 	}
 	else	//Otherwise, add the data as a new task
 	{
-		$result = mysql_query("INSERT INTO items (id,title,date,section,notes,url,done,context,project)".
+		$result = $mysqli->query("INSERT INTO items (id,title,date,section,notes,url,done,context,project)".
 		"values ('NULL', '$title', '$date', '$section', '$notes', '$url', '$done', '$context', '$project')");
 		echo "<div id='updated' class='fade'><img src='images/note_go.png' alt='' /> ".$l_msg_itemadd."</div>";
 		$clear = true;
@@ -81,7 +81,7 @@ if ($clear)	//If 'clear' is true, we set the form values to blank/default values
 	<td>
 		<select name='section' size="7">
 		<?php
-		$result4 = mysql_query("SELECT * FROM sections ORDER BY id");
+		$result4 = $mysqli->query("SELECT * FROM sections ORDER BY id");
 		foreach($l_sectionlist as $key=>$value)
 		{
 			$selected = ($section == $key) ? 'selected="selected"' : '';
@@ -93,8 +93,8 @@ if ($clear)	//If 'clear' is true, we set the form values to blank/default values
 	<td>
 		<select name='context' size="7">
 		<?php
-		$result2 = mysql_query("SELECT * FROM contexts ORDER BY title");
-		while($r=mysql_fetch_array($result2))
+		$result2 = $mysqli->query("SELECT * FROM contexts ORDER BY title");
+		while($r=$result2->fetch_array())
 		{
 			$context2=$r["title"];
 			$selected = ($context == $context2) ? 'selected="selected"' : '';
@@ -106,8 +106,8 @@ if ($clear)	//If 'clear' is true, we set the form values to blank/default values
 	<td>
 		<select name='project' size="7">
 		<?php
-		$result3 = mysql_query("SELECT * FROM projects ORDER BY title");
-		while($r=mysql_fetch_array($result3))
+		$result3 = $mysqli->query("SELECT * FROM projects ORDER BY title");
+		while($r=$result3->fetch_array())
 		{
 			$project2=$r["title"];
 			$selected = ($project == $project2) ? 'selected="selected"' : '';

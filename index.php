@@ -11,8 +11,8 @@
 	?>
 	<p><img src="images/chart_bar.png" alt="" />&nbsp;
 	<?php
-		$tasktotal = mysql_query("SELECT * FROM items WHERE done='0'");
-		$numtasks=mysql_num_rows($tasktotal);
+		$tasktotal = $mysqli->query("SELECT * FROM items WHERE done='0'");
+		$numtasks = $tasktotal->num_rows;
 		if($numtasks == 1) echo $l_index_1task;
 		else echo $l_index_mtasks.$numtasks.$l_index_mtaske;
 	?>
@@ -23,8 +23,8 @@
 display_frontpage();
 
 //Tips Box
-$result = mysql_query("SELECT * FROM settings WHERE setting='tips'");
-while($r=mysql_fetch_array($result))
+$result = $mysqli->query("SELECT * FROM settings WHERE setting='tips'");
+while($r=$result->fetch_array())
 {
 	if($r['value'] == 1)
 	{

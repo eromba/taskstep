@@ -6,7 +6,8 @@ body{
 }
 
 #container{
-	width:800px;
+	min-width:800px;
+	max-width:1000px;
 	margin:0 auto;
 }
 
@@ -184,7 +185,8 @@ body{
 
 #content{
 	font-size:10pt;
-	width:560px;
+	min-width:560px;
+	max-width:760px;
 	margin-left:210px;
 }
 

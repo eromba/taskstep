@@ -1,0 +1,17 @@
+Wenn Sie auf das Datum klicken, werden die heute fälligen Aufgaben angezeigt.
+--NEXT--
+Alle kleinen Symbole hier stammen von <a href="http://www.famfamfam.com">famfamfam.com</a>.
+--NEXT--
+Sie können alle Elemente nach Kontext oder Projekt auflisten.
+--NEXT--
+Versuchen Sie dies nicht auf einem öffentlichen Server! Es ist nicht sehr sicher!
+--NEXT--
+Der Druck ist für 3x5-Karteikarten vorgesehen. Sie können jedoch auf A4 drucken, indem Sie in Ihrem Browser auf Datei-> Drucken klicken.
+--NEXT--
+Probleme? Probieren Sie doch die Hilfe aus.
+--NEXT--
+Klicken Sie auf dieser Indexseite auf ein Element in der Liste "Sofort", um es zu bearbeiten.
+--NEXT--
+Sie können jetzt das Datum aus einem Kalender auswählen. Klicken Sie einfach in das Datumsfeld, als würden Sie tippen.
+--NEXT--
+Das Kalenderskript ist <a href="http://www.garrett.nildram.co.uk/calendar/jacs.htm"> JACS </a> von Anthony Garrett.

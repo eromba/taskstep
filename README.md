@@ -1,4 +1,4 @@
-[TaskStep](http://www.taskstep.org) - Todo list manager for local PHP servers
+TaskStep - Todo list manager for local PHP servers
 ================================
 
 Features
@@ -9,11 +9,30 @@ Features
 - Print lists on 3 x 5 index cards
 - Automatically list all items for today
 - Current and overdue items are highlighted automatically
+- Available languages: English, Russian, German, Spanish (partial)
 - Free and open-source
+
+Dependencies
+---
+
+- MariaDB (MySQL) Database
+- PHP => 7.0
+
+Installation
+---
+
+- Create database, user and rights. Use your own secure credentials!
+```
+CREATE DATABASE taskstep;
+CREATE USER 'taskstep'@'localhost' IDENTIFIED BY 'taskstep';
+GRANT ALL PRIVILEGES ON taskstep.* TO 'taskstep'@'localhost';
+```
+- Put code into desired location e.g. `/var/www/taskstep`
+- Go to installation URL: `https://www.example.com/taskstep/install/install.php`
+- Remove subdir `install` for security reasons
+- Log in and change your password
 
 Project History
 ---
 
-TaskStep was originally designed by [Rob Lowcock](http://www.cunningtitle.com), who began the project in 2006. In March 2008, he handed it off to me ([eromba](https://www.github.com/eromba)), after I refactored much of the existing code base.
-
-The code hasn't been touched since then (and it could use a complete rewrite), but I am leaving it here for the open-source masses. Please fork if you feel inspired -- I will gladly accept pull requests!
+TaskStep was originally designed by [Rob Lowcock](https://github.com/rob-lowcock) in 2006, significantly refactored by [Ethan Romba](https://www.github.com/eromba) in 2008, and given much-needed updates by [Thomas Hooge](https://www.github.com/thooge) in 2020.

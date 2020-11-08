@@ -1,6 +1,6 @@
 <!-- Close content -->
 </div>
-<div id="footer">Taskstep 1.0 - Originally by Rob Lowcock. Updated and maintained by Ethan Romba.</div>
+<div id="footer">Taskstep 1.1 - By Rob Lowcock, Ethan Romba, and Thomas Hooge</div>
 <!--Close container-->
 </div>
 </body>
